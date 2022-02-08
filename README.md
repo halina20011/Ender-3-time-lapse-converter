@@ -1,6 +1,6 @@
 <h1>Work in progress</h1>
 
-<div id="header" style="align=center;">
+<div id="header" align="center">
   <img src="https://yt3.ggpht.com/ytc/AKedOLQFysrEpK0iGjCE5te5ZCYl6FqTEoircgYwKPlvZg=s88-c-k-c0x00ffffff-no-rj" width="100" style="border-radius: 50%;"/>
 </div>
 
