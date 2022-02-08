@@ -1,0 +1,6 @@
+{
+    "GCodeTriggerPosition": "G0 X235 Y235",
+    "retraction": -3.0,
+    "showLayerNumber": true,
+    "waitTime": 3
+}
