@@ -1,8 +1,8 @@
 <h1>Work in progress</h1>
 
-<!-- <div id="header" style="align='center';">
-  <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/>
-</div> -->
+<div id="header" style="align=center;">
+  <img src="https://yt3.ggpht.com/ytc/AKedOLQFysrEpK0iGjCE5te5ZCYl6FqTEoircgYwKPlvZg=s88-c-k-c0x00ffffff-no-rj" width="100"/>
+</div>
 
 <div id="badges">
   <a href="https://www.youtube.com/channel/UCG0h6r6T1joRASO29JV9qMQ">
