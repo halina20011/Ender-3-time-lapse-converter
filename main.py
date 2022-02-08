@@ -1,7 +1,38 @@
-from ntpath import join
+import sys
 import os
 
 import data
+
+# original file path
+
+def checkFile(filePath):
+    lower = sys.argv[1].lower()
+    if(lower.find(".gcode") != -1):
+        return True
+    else: return False
+
+def getRunArguments():
+    filePath1 = None
+    filePath2 = None
+    print(len(sys.argv))
+    if(len(sys.argv) > 1):
+        arguments = sys.argv
+        fileN = sys.argv[0]
+        # name
+        if(len(sys.argv) >= 2):
+            filePath1 = os.path.abspath(sys.argv[1])
+        if(len(sys.argv) == 3):
+            filePath2 = os.path.abspath(sys.argv[2])
+    
+    return [filePath1, filePath2]
+
+def getFilesPaths():
+    originalFile = input("Original Gcode file: ")
+    newFile = input("Path of generated file: ")
+    filePath1 = os.path.abspath(originalFile)
+    filePath2 = os.path.abspath(newFile)
+
+    return [filePath1, filePath2]
 
 def listToString(_list):
     s = "".join([str(element) for element in _list])
@@ -37,8 +68,7 @@ def floatToIntToString(_float):
     return str(int(float(_float)))
 
 class printer():
-    def __init__(self, name, X, Y, Z, E):
-        self.name = name
+    def __init__(self, X, Y, Z, E):
         self.X = X
         self.Y = Y
         self.Z = Z
@@ -99,7 +129,7 @@ class printer():
             returnString += " " + returnValues[x]
         return returnString
 
-printer1 = printer("Ender3", 0, 0, 0, 0)
+printer1 = printer(0, 0, 0, 0)
 
 def setValues(command, _printer): #G1 X100 Y65 Z2.8
     listOfCommands = command.split(" ") #["G1", "X187.8", "Y65", "Z2.8"]
@@ -130,36 +160,48 @@ def getZChanges(lines, cura = True):
     return ZLines
 
 def writeToNewFile(fileName, content):
-    fileName =  os.path.join(os.path.dirname(__file__), fileName)
+    # fileName =  os.path.join(os.path.abspath(__file__), fileName)
     print(fileName)
     with open(fileName, "w") as f:
         for line in content:
             f.write(f"{line}\n")
 
-
-fileName = "propeller.gcode"
-with open(fileName, "r") as f:
-    fileContent = f.read()
-    listOfLayers = fileContent.split("\n")
-    zLayers = getZChanges(listOfLayers)
-    print(len(zLayers))
-    print(zLayers)
-
-    newFileContent = []
-    zLayerIndex = 0
-    for index, layer in enumerate(listOfLayers):
-        if(len(zLayers) > zLayerIndex):
-            if(int(index + 1) == zLayers[zLayerIndex]):
-                listOfCommandsToAdd = command(printer1.getValue("X"), printer1.getValue("Y"), zLayerIndex)
-                for index, commandToAdd in enumerate(listOfCommandsToAdd):
-                    newFileContent.append(commandToAdd)
-                zLayerIndex += 1
-
-        newFileContent.append(layer)
-        if(layer.count(";") == 0):
-            setValues(layer, printer1)
+def main():
+    files = getRunArguments()
+    filePath1 = files[0] 
+    filePath2 = files[1]
+    print(filePath1)
+    print(filePath2)
+    if(filePath1 == None):
+        files = getFilesPaths()
+        filePath1 = files[0]
+        filePath2 = files[0]
     
-    newFilename = fileName.split(".")
-    newFilename.insert(1, "New.")
-    newFilename = listToString(newFilename)
-    writeToNewFile(newFilename, newFileContent)
+    with open(filePath1, "r") as f:
+        fileContent = f.read()
+        listOfLayers = fileContent.split("\n")
+        zLayers = getZChanges(listOfLayers)
+        print(len(zLayers))
+        print(zLayers)
+
+        newFileContent = []
+        zLayerIndex = 0
+        for index, layer in enumerate(listOfLayers):
+            if(len(zLayers) > zLayerIndex):
+                if(int(index + 1) == zLayers[zLayerIndex]):
+                    listOfCommandsToAdd = command(printer1.getValue("X"), printer1.getValue("Y"), zLayerIndex)
+                    for index, commandToAdd in enumerate(listOfCommandsToAdd):
+                        newFileContent.append(commandToAdd)
+                    zLayerIndex += 1
+
+            newFileContent.append(layer)
+            if(layer.count(";") == 0):
+                setValues(layer, printer1)
+        
+        # newFilename = filePath2.split(".")
+        # newFilename.insert(1, "New.")
+        # newFilename = listToString(newFilename)
+        writeToNewFile(filePath2, newFileContent)
+
+if __name__ == '__main__':
+    main()
