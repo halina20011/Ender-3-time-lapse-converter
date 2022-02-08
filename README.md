@@ -1,7 +1,7 @@
 <h1>Work in progress</h1>
 
 <div id="header" style="align=center;">
-  <img src="https://yt3.ggpht.com/ytc/AKedOLQFysrEpK0iGjCE5te5ZCYl6FqTEoircgYwKPlvZg=s88-c-k-c0x00ffffff-no-rj" width="100"/>
+  <img src="https://yt3.ggpht.com/ytc/AKedOLQFysrEpK0iGjCE5te5ZCYl6FqTEoircgYwKPlvZg=s88-c-k-c0x00ffffff-no-rj" width="100" style="border-radius: 50%;"/>
 </div>
 
 <div id="badges">
