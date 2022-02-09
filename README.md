@@ -1,7 +1,7 @@
 <h1>Work in progress</h1>
 
 <div id="header" align="center">
-    <img src="https://yt3.ggpht.com/ytc/AKedOLQFysrEpK0iGjCE5te5ZCYl6FqTEoircgYwKPlvZg=s88-c-k-c0x00ffffff-no-rj" width="100" style="border-radius: 50%;"/>
+    <img src="https://github.com/halina20011/halina20011/blob/main/Halina-Circle.png" width="100"/>
     <div id="badges">
     <a href="https://www.youtube.com/channel/UCG0h6r6T1joRASO29JV9qMQ">
         <img src="https://img.shields.io/badge/YouTube-red?style=for-the-badge&logo=youtube&logoColor=white" alt="Youtube Badge"/>
@@ -13,6 +13,8 @@
 
 </div>
 
+<h2>How to change some program settings?</h2>
+in working directory, there is file with name ''settings.json" (/settings.json). In there there are values you can change.
 
 <h2>How to run file?</h2>
 <p>You can run file with arguments:</p>
