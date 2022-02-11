@@ -14,7 +14,6 @@ class JSON():
         self.showLayerNumber = jsonDataContent['showLayerNumber']
         self.waitTime = jsonDataContent['waitTime']
 
-        self.videoMode = jsonDataContent['videoMode']
         self.fileOutput = jsonDataContent['fileOutput']
         self.takePhotoOnFirstLayer = jsonDataContent['takePhotoOnFirstLayer']
         self.filePath = filePath

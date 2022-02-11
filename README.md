@@ -16,11 +16,14 @@
 <h2>How to change some program settings?</h2>
 in working directory, there is file with name ''settings.json" (/settings.json). In there there are values you can change.
 
-setting | info
---- | ---
-| ```GCodeTriggerPosition``` | This value controls where to move printer head to take photo. Don't set z axis and speed in it! Speed you change in "speed" setting. |
-| ```speed``` | Change speed. |
- ```runCommandWhenTakingPicture``` | Add additional gcode to run.
+setting | info | input type
+--- | --- | ---
+| ```GCodeTriggerPosition``` | This value controls where to move printer head to take photo. Don't set z axis and speed in it! Speed you change in "speed" setting. | string |
+| ```speed``` | Change speed. | string
+ ```runCommandWhenTakingPicture``` | Add additional gcode to run. | list |
+| ```retraction``` | How much retraction need printer do before and after taking photo in mm. | negative float |
+ ```showLayerNumber``` | if this variable is set to true: the screen will show the current printing | layer. | boolean
+| ```waitTime``` | How much seconds to wait, after printer head arrive to ```GCodeTriggerPosition``` | int
 
 <h2>How to run file?</h2>
 <p>You can run file with arguments:</p>
