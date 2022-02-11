@@ -1,6 +1,12 @@
 {
     "GCodeTriggerPosition": "G0 X235 Y235",
+    "speed": "F2000",
+    "runCommandWhenTakingPicture": null,
+    "commandsToRunWhenTakingPicture": [],
     "retraction": -3.0,
     "showLayerNumber": true,
-    "waitTime": 3
+    "waitTime": 3,
+
+    "videoMode": false,
+    "takePhotoOnFirstLayer": false
 }

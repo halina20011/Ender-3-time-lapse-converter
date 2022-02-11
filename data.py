@@ -7,9 +7,16 @@ class JSON():
     def __init__(self, jsonDataContent, filePath):
         self.jsonDataContent = jsonDataContent
         self.GCodeTriggerPosition = jsonDataContent['GCodeTriggerPosition']
+        self.speed = jsonDataContent['speed']
+        self.runCommandWhenTakingPicture = jsonDataContent['runCommandWhenTakingPicture']
+        self.commandsToRunWhenTakingPicture = jsonDataContent['commandsToRunWhenTakingPicture']
         self.retraction = jsonDataContent['retraction']
         self.showLayerNumber = jsonDataContent['showLayerNumber']
         self.waitTime = jsonDataContent['waitTime']
+
+        self.videoMode = jsonDataContent['videoMode']
+        self.fileOutput = jsonDataContent['fileOutput']
+        self.takePhotoOnFirstLayer = jsonDataContent['takePhotoOnFirstLayer']
         self.filePath = filePath
 
     def changeValue(self, index, newValue):

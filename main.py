@@ -40,24 +40,37 @@ def listToString(_list):
     return s
 
 def command(X, Y, layer):
+    speed = data.printerData.speed #Get speed from settings
+    if(speed.find("F") == -1): #Check if is in string "F"
+        speed = f"F{speed}"    #If its not, add it.
+    
+    if(data.printerData.takePhotoOnFirstLayer != True and layer == 0): #If in settings is not set to take picture on 0 or
+        return []                                                      #or layer is not 0 then retrun empty list
+    
     commands = []
-    commands.append(f";Custom Timelapse start.")
-    commands.append(f"M83 ;Switch to relative E values for retraction.")
-    commands.append(f"G1 F1800 E{data.printerData.retraction} ;Retraction")
-    commands.append(f"M82 ;Switch to absolute E values for retraction.")
-    commands.append(f"G91   ;Switch to relative position.")
-    commands.append(f"G0 Z1 ;Move Z axis up a bit")
-    commands.append(f"G90   ;Switch back to absolute position")
+    commands.append(f"; Custom Timelapse start.")
+    commands.append(f"M83; Switch to relative E values for retraction.")
+    commands.append(f"G1 E{data.printerData.retraction} {speed}; Retraction")
+    commands.append(f"M82; Switch to absolute E values for retraction.")
+    commands.append(f"G91   ; Switch to relative position.")
+    commands.append(f"G0 Z1 ; Move Z axis up a bit")
+    commands.append(f"G90   ; Switch back to absolute position")
     if(data.printerData.showLayerNumber):
-        commands.append(f"M117 {layer} ;Show current layer.")
-    commands.append(f"{data.printerData.GCodeTriggerPosition}")
-    commands.append(f"M400 ;Wait to finish moving.")
+        commands.append(f"M117 {layer} layer.; Show current layer.")
+    
+    commands.append(f"{data.printerData.GCodeTriggerPosition} {speed}")
+    commands.append(f"M400; Wait to finish moving.")
+
+    if(data.printerData.runCommandWhenTakingPicture != None):
+        for command in data.printerData.commandsToRunWhenTakingPicture:
+            commands.append(f"{command}")
+
     commands.append(f"G4 P{1000 * data.printerData.waitTime} ;Wait for camera")
-    commands.append(f"G0 F1800 {X} {Y} ;Move back to original position.")
-    commands.append(f"G91 ;Switch to relative position")
-    commands.append(f"G0 Z-1 ;Restore Z axis")
-    commands.append(f"G90 ;Switch back to absolute position")
-    commands.append(f";Custom Timelapse end.")
+    commands.append(f"G0 {X} {Y} {speed};Move back to original position.")
+    commands.append(f"G91; Switch to relative position")
+    commands.append(f"G0 Z-1; Restore Z axis")
+    commands.append(f"G90; Switch back to absolute position")
+    commands.append(f"; Custom Timelapse end.")
     return commands
 
 commands = [
@@ -115,20 +128,6 @@ class printer():
             return f"E{str(self.E)}"
         return None
 
-    def getValuesInt(self, type, values):
-        returnValues = []
-        if(values[0] == "True"):
-            returnValues.append("X" + floatToIntToString(self.X))
-        if(values[1] == "True"):
-            returnValues.append("Y" + floatToIntToString(self.Y))
-        if(values[2] == "True"):
-            returnValues.append("Z" + floatToIntToString(self.Z))
-        
-        returnString = type
-        for x in range(0, len(returnValues)):
-            returnString += " " + returnValues[x]
-        return returnString
-
 printer1 = printer(0, 0, 0, 0)
 
 def setValues(command, _printer): #G1 X100 Y65 Z2.8
@@ -160,7 +159,6 @@ def getZChanges(lines, cura = True):
     return ZLines
 
 def writeToNewFile(fileName, content):
-    # fileName =  os.path.join(os.path.abspath(__file__), fileName)
     print(fileName)
     with open(fileName, "w") as f:
         for line in content:
@@ -170,8 +168,8 @@ def main():
     files = getRunArguments()
     filePath1 = files[0] 
     filePath2 = files[1]
-    print(filePath1)
-    print(filePath2)
+    print(f"Input  file: {filePath1}")
+    print(f"Output file:{filePath2}")
     if(filePath1 == None):
         files = getFilesPaths()
         filePath1 = files[0]
@@ -181,8 +179,8 @@ def main():
         fileContent = f.read()
         listOfLayers = fileContent.split("\n")
         zLayers = getZChanges(listOfLayers)
-        print(len(zLayers))
-        print(zLayers)
+        print(f"Number of layers: {len(zLayers)}")
+        # print(zLayers)
 
         newFileContent = []
         zLayerIndex = 0
