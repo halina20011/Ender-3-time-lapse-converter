@@ -22,7 +22,7 @@ setting | info | type
 | ```speed``` | Change speed. | string
  ```runCommandWhenTakingPicture``` | Add additional gcode to run. | list |
 | ```retraction``` | How much retraction need printer do before and after taking photo in mm. | negative float |
- ```showLayerNumber``` | if this variable is set to true: the screen will show the current printing | layer. | boolean
+ ```showLayerNumber``` | if this variable is set to true: the screen will show the current printing layer. | boolean
 | ```waitTime``` | How much seconds to wait, after printer head arrive to ```GCodeTriggerPosition``` | int
 
 <h2>How to run file?</h2>
