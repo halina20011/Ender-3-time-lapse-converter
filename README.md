@@ -19,7 +19,7 @@ in working directory, there is file with name ''settings.json" (/settings.json).
 | ```GCodeTriggerPosition``` | This value controls where to move printer head to take photo. Don't set z axis and speed in it! Speed you change in "speed" setting. |
 | ```speed``` | Change speed. |
 | ```runCommandWhenTakingPicture``` | Add additional gcode to run. |
----
+
 <h2>How to run file?</h2>
 <p>You can run file with arguments:</p>
 
