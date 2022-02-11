@@ -20,7 +20,7 @@ setting | info
 --- | ---
 | ```GCodeTriggerPosition``` | This value controls where to move printer head to take photo. Don't set z axis and speed in it! Speed you change in "speed" setting. |
 <!-- --- | --- -->
- ```speed``` | Change speed.
+| ```speed``` | Change speed. |
 <!-- --- | --- -->
  ```runCommandWhenTakingPicture``` | Add additional gcode to run.
 
