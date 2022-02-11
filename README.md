@@ -14,7 +14,8 @@
 </div>
 
 <h2>How to change some program settings?</h2>
-in working directory, there is file with name ''settings.json" (/settings.json). In there there are values you can change.
+
+<p>In working directory, there is file with name ''settings.json" (/settings.json). In there there are values you can change. </p>
 
 setting | info | type
 --- | --- | ---
