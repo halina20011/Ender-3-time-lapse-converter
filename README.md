@@ -18,7 +18,7 @@ in working directory, there is file with name ''settings.json" (/settings.json).
 
 setting | info
 --- | ---
-| ```GCodeTriggerPosition``` | This value controls where to move printer head to take photo. Don't set z |axis and speed in it! Speed you change in "speed" setting.
+| ```GCodeTriggerPosition``` | This value controls where to move printer head to take photo. Don't set z axis and speed in it! Speed you change in "speed" setting. |
 <!-- --- | --- -->
  ```speed``` | Change speed.
 <!-- --- | --- -->
