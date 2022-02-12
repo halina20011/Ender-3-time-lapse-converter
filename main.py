@@ -3,8 +3,6 @@ import os
 
 import data
 
-# original file path
-
 def checkFile(filePath):
     lower = sys.argv[1].lower()
     if(lower.find(".gcode") != -1):
@@ -18,7 +16,6 @@ def getRunArguments():
     if(len(sys.argv) > 1):
         arguments = sys.argv
         fileN = sys.argv[0]
-        # name
         if(len(sys.argv) >= 2):
             filePath1 = os.path.abspath(sys.argv[1])
         if(len(sys.argv) == 3):
