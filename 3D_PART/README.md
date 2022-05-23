@@ -37,8 +37,7 @@ Filament material: PLA<br>
 2. Then with M4X20 screw screw the part (Image: 2). Make sure the belt that moves the printer head is properly tensioned.
     ![image:2](/3D_PART/media/image_2.png)
 
-3. Turn Ender 3 on and then run auto home for all axis. To not damage printing bed then raise z axis. Then glue the switch. Make sure when printer head move to 235 X it will press the switch. (Image: 3)
-
+3. Turn Ender 3 on and then run auto home for all axis. To not damage printing bed then raise z axis. Then glue the switch. Make sure when printer head move to 235 X it will press the switch (Image: 3).
     ![image:3](/3D_PART/media/image_3.jpg)
 
 ## Homing video
