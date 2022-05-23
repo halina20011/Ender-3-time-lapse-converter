@@ -35,3 +35,5 @@ setting | info | type
 python main.py [Original file] [Path where to store generated file]
 ```
 <p>Or you can run file without arguments and that will program ask for them:</p>
+
+If you want to print and mount switch holder for "documentation" go [/3D_PART/README.md](/3D_PART/README.md)
